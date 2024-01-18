@@ -10,12 +10,12 @@ body {
 }
 
 #main {
-    max-width: 50%;
-    min-height: 50%;
+    max-width: 100%;
+    min-height: 90%;
     border: 2px solid black;
     border-radius: 15px;
     background-color: #fff;
-    padding: 4rem;
+    padding: 2rem;
 }
 
 #user-input {
@@ -32,7 +32,7 @@ body {
     margin: 1rem;
     background-color: black;
     font-family: 'Montserrat', sans-serif;
-    font-size: large;
+    font-size: medium;
     color: white;
 }
 #img-div {
@@ -42,5 +42,41 @@ body {
 }
 
 #push {
-    width: 150px;
+    width: 100px;
+}
+
+span {
+    background-color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: medium;
+    padding: 0.5rem;
+    border: 1px black solid;
+    border-radius: 10px;
+    margin-right: 0.5rem;
+}
+
+@media screen and (min-width: 600px) {
+    #main {
+        max-width: 50%;
+        min-height: 50%;
+        padding: 4rem;
+    }
+
+    #use-input {
+        font-size: large;
+    }
+
+    #btn {
+        font-size: large;
+    }
+
+    #span {
+        font-size: large;
+        margin-right: 0.5rem;
+        margin-bottom: 0;
+    }
+
+    #push {
+        width: 150px;
+    }
 }
