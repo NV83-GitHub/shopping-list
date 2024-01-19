@@ -10,12 +10,15 @@ body {
 }
 
 #main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     max-width: 100%;
     min-height: 90%;
     border: 2px solid black;
     border-radius: 15px;
     background-color: #fff;
-    padding: 2rem;
+    /* padding: 2rem; */
 }
 
 #user-input {
@@ -29,7 +32,7 @@ body {
 #btn {
     padding: 0.5rem;
     border-radius: 10px;
-    margin: 0.2rem;
+    margin: 0.5rem;
     background-color: black;
     font-family: 'Montserrat', sans-serif;
     font-size: medium;
@@ -39,20 +42,28 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 1rem;
 }
 
 #push {
-    width: 100px;
+    width: 125px;
+}
+
+ul {
+    list-style: none;
 }
 
 li {
+    display: inline-block;
     background-color: #fff;
     font-family: 'Montserrat', sans-serif;
     font-size: medium;
     padding: 0.5rem;
-    border: 1px black solid;
+    border: 2px black solid;
     border-radius: 10px;
-    margin-right: 0.5rem;
+    margin-right: 0.2rem;
+    margin-bottom: 0.2rem;
+    width: fit-content;
 }
 
 @media screen and (min-width: 600px) {
@@ -62,7 +73,7 @@ li {
         padding: 4rem;
     }
 
-    #use-input {
+    #user-input {
         font-size: large;
     }
 
