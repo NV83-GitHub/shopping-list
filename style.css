@@ -45,7 +45,7 @@ body {
     width: 100px;
 }
 
-span {
+li {
     background-color: #fff;
     font-family: 'Montserrat', sans-serif;
     font-size: medium;
@@ -69,14 +69,12 @@ span {
     #btn {
         font-size: large;
     }
-
-    #span {
+    #push {
+        width: 150px;
+    }
+    li {
         font-size: large;
         margin-right: 0.5rem;
         margin-bottom: 0;
-    }
-
-    #push {
-        width: 150px;
     }
 }
