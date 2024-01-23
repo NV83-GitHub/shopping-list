@@ -5,7 +5,6 @@ import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebas
 // Firebase variables
 const appSettings = {
     // databaseURL : "ICI AJOUTE URL VERS TA DATABASE"
-    databaseURL : "https://shoppingdb-84ee9-default-rtdb.europe-west1.firebasedatabase.app/"
 }
 const app = initializeApp(appSettings)
 const database = getDatabase(app)
