@@ -4,58 +4,69 @@ import { getDatabase, ref, push, onValue, remove } from "https://www.gstatic.com
 
 // Firebase variables
 const appSettings = {
-    databaseURL : "ICI AJOUTE URL VERS TA DATABASE"
+    databaseURL : "ICI TON ADRESSE DATABASE"
 }
 const app = initializeApp(appSettings)
 const database = getDatabase(app)
 const shoppingListInDB = ref(database, "shoppingList")
 
 // DOM Manipulation Variable
-const btn = document.getElementById("btn")
-const text = document.getElementById("user-input")
-const listHtml = document.getElementById("list-section")
+const addBtn = document.getElementById("add-btn")
+const inputFieldElement = document.getElementById("user-input")
+const listElement = document.getElementById("list-section")
 
-// Check la Database for existing entries then display them
+// Initial check de la Database for existing entries then display them
 populateFromDB()
 
 // Add user input to DB and ask DB for updated Data then display them
-btn.addEventListener("click", () => {
-    let inputValue = text.value
+addBtn.addEventListener("click", () => processInput())
+inputFieldElement.addEventListener("keypress", e => {
+    if (e.key === "Enter") {
+        processInput()
+    }
+})
+
+// Takes the userInput, push it to Firebase, Populate the html and cleanup
+function processInput() {
+    let inputValue = inputFieldElement.value
     //Send new user input to DB
     push(shoppingListInDB, inputValue)
     //Get updated data from DB and display them
     populateFromDB()
     //Clean the user input field
     clearInputValueField()
-})
-
+    inputFieldElement.focus()
+}
 
 function clearInputValueField() {
-    text.value = ""
+ inputFieldElement.value = ""
 }
+
 // Wrap onValue function for cleaner code
 function populateFromDB() {
     onValue(shoppingListInDB, function(snapshot) {
         if (snapshot.val()){
             let shoppingItemsArray = Object.entries(snapshot.val())
-            listHtml.innerHTML = null
-            shoppingItemsArray.forEach((shopItem) => updateItemListHTML(shopItem))
+            listElement.innerHTML = null
+            shoppingItemsArray.forEach((shopItem) => updateItemListElement(shopItem))
         } else {
-            listHtml.innerHTML = null
+            listElement.innerHTML = null
         }
-
     })
 }
-function updateItemListHTML(item) {
+
+// Fonction qui crée le HTML et le bouton pour enelever des items de la liste
+function updateItemListElement(item) {
     let itemID = item[0]
     let itemValue = item[1]
 
-    listHtml.innerHTML += `<li>
+    listElement.innerHTML += `<li>
         ${itemValue}
-        <button id="${itemID}" >X</button>
+        <button class="del-btn" id="${itemID}" >x</button>
     </li>`
 
-    // J'ai du ajouter un timeout car le browser allait trop vite pour que le co
+    // Remove items from list in database
+    // Timeout pour laisser le temps au browser de créer l'element avant d'attacher le eventlistener
     setTimeout(() => {
         document.getElementById(itemID).addEventListener("click", () => remove(ref(database, `shoppingList/${itemID}`)))   
     }, 500);

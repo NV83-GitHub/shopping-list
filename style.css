@@ -1,11 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 body {
     background-color: #FCFAFD;
+    user-select: none;
 }
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 100vh;
 }
 
@@ -15,7 +13,7 @@ body {
     align-items: center;
     max-width: 100%;
     min-height: 90%;
-    border: 2px solid black;
+    min-width: 320px;
     border-radius: 15px;
     background-color: #fff;
 }
@@ -28,8 +26,8 @@ body {
     border-radius: 10px;
 }
 
-#btn {
-    padding: 0.5rem;
+#add-btn {
+    padding: 0.8rem;
     border-radius: 10px;
     margin: 0.5rem;
     background-color: black;
@@ -53,6 +51,9 @@ ul {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    padding: 0;
+    margin: 1rem 2rem;
+    gap: 8px;
     padding-left: 0;
 }
 
@@ -60,16 +61,30 @@ li {
     display: inline-block;
     background-color: #fff;
     font-family: 'Montserrat', sans-serif;
-    font-size: medium;
-    padding: 0.5rem;
-    border: 2px black solid;
+    font-size: large;
+    padding: 0.8rem;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     margin-right: 0.2rem;
     margin-bottom: 0.2rem;
     width: fit-content;
 }
 
+.del-btn {
+    border: grey solid 1px;
+    background-color: #fff;
+    border-radius: 50px;
+    color: gray;
+}
+
 @media screen and (min-width: 600px) {
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.8);
+    }
     #main {
         max-width: 50%;
         min-height: 50%;
@@ -80,22 +95,10 @@ li {
         font-size: large;
     }
 
-    #btn {
+    #add-btn {
         font-size: large;
     }
     #push {
         width: 150px;
-    }
-    li {
-        font-size: large;
-        display: inline-block;
-        background-color: #fff;
-        font-family: 'Montserrat', sans-serif;
-        padding: 0.5rem;
-        border: 2px black solid;
-        border-radius: 10px;
-        margin-right: 0.2rem;
-        margin-bottom: 0.2rem;
-        width: fit-content;
     }
 }
